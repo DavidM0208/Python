@@ -1,34 +1,21 @@
-celular = 3209161848
-contra = 1234
 saldo = 4500
-op = "s" or "S"
+op = 1
 intentos = 3
 
 for i in range (1,4):
 
-    msg = int(input("Ingrese el número de celular: \n "))
+    celular = int(input("Ingrese el número de celular: \n "))
     password=int(input("Digite los 4 digitos de su contraseña: \n"))
 
-    if msg == celular and password == contra:
+    if celular == 3209161848 and password == 1234:
 
-        while op == "s" or "S":
+        while op == 1:
             print(f"¡Bienvenido a nequi! \n Su saldo es de: {saldo}")
-            select = int(input("Digite 1 para sacar dinero. \nDigite 2 para enviar dinero. \nDigite 3 para recargar dinero. \nDigite 4 para salir. \n"))
+            select = int(input("Digite 1 para sacar dinero. \nDigite 2 para enviar dinero. \nDigite 3 para recargar dinero. \nDigite 4 para ahorrar dinero.\nDigite 5 para hacer una recarga a celular. \nDigite 6 para salir. \n"))
 
             if select == 1:
                 opcion = int(input("Digite 1 para sacar el dinero por cajero. \nDigite 2 para punto fisico.\n"))
-                if opcion == 1:
-                    print(f"Su saldo actual es: {saldo}")
-                    retiro = int(input("¿Cuanto desea retirar?\n"))
-                    if retiro > saldo:
-                        print("No tienes fondos para retirar.")
-                    elif retiro <= saldo:
-                        saldo = saldo - retiro
-                        print("Su codigo es: 987654")
-                        print(f"Su saldo actual es {saldo}")
-                    elif retiro < 2000:
-                        print("No te alcanza.")
-                elif opcion == 2:
+                if opcion == 1 or opcion == 2:
                     print(f"Su saldo actual es: {saldo}")
                     retiro = int(input("¿Cuanto desea retirar?\n"))
                     if retiro > saldo:
@@ -52,17 +39,37 @@ for i in range (1,4):
 
             elif select == 3:
                 recarga = int(input("Ingrese el valor que desea recargar.\n"))
-                preg = int(input("Digite 1 para realizar la recarga. De lo contrario digite 2\n"))
+                preg = int(input("Digite 1 para realizar la recarga. \nDe lo contrario digite 2.\n"))
                 if preg == 1:
                     saldo = saldo + recarga
                     print(f"Su recarga ha sido realizada exitosamente, su saldo actual es {saldo}")
                 elif preg == 2: 
                     print("Ha cancelado la recarga.")
-            elif select == 4:
-                print("Gracias por usar nequi.")
-        op = input("Si desea elegir otra opcion, escriba SI. De lo contrario escriba NO.\n")
 
-        saldo = saldo -retiro
+            elif select == 4:
+
+                print(f"Su saldo actual es {saldo}")
+                ahorro = int(input("¿Cuanto dinero desea ahorrar?\n"))
+                saldo = saldo - ahorro
+                print(f"Usted ahorro {ahorro}, su nuevo saldo es de {saldo}.")
+
+            elif select == 5:
+
+                print(f"Su saldo actual es {saldo}")
+                numero = int(input("Digite el número de celular al que desea recargar.\n"))
+                if numero == celular:
+                    print(f"Su saldo actual es {saldo}")
+                    precio = int("Ingrese el valor de la recagra: \n")
+                    saldo = saldo - precio
+                    print(f"Su recagra se a realizado con exito al número {numero} de un valor de {precio}")
+
+            elif select == 6:
+                print("Gracias por usar nequi.")
+                break
+                
+        op = input("Si desea selecionar otra opción digite 1. De lo contrario digite 2.\n")
+
+        saldo = saldo - retiro
 
     else:
         intentos = intentos - 1
