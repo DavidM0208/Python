@@ -1,6 +1,7 @@
 saldo = 4500
 op = 1
 intentos = 3
+retiro = int
 
 for i in range (1,4):
 
@@ -10,6 +11,7 @@ for i in range (1,4):
     if celular == 3209161848 and password == 1234:
 
         while op == 1:
+
             print(f"¡Bienvenido a nequi! \n Su saldo es de: {saldo}")
             select = int(input("Digite 1 para sacar dinero. \nDigite 2 para enviar dinero. \nDigite 3 para recargar dinero. \nDigite 4 para ahorrar dinero.\nDigite 5 para hacer una recarga a celular. \nDigite 6 para salir. \n"))
 
@@ -50,24 +52,29 @@ for i in range (1,4):
 
                 print(f"Su saldo actual es {saldo}")
                 ahorro = int(input("¿Cuanto dinero desea ahorrar?\n"))
-                saldo = saldo - ahorro
-                print(f"Usted ahorro {ahorro}, su nuevo saldo es de {saldo}.")
+                if ahorro > saldo:
+                    print("No tienes fondos para ahorrar.")
+                elif ahorro <= saldo:
+                    saldo = saldo - ahorro
+                    print(f"Usted ahorro {ahorro}, su nuevo saldo es de {saldo}.")
 
             elif select == 5:
 
                 print(f"Su saldo actual es {saldo}")
-                numero = int(input("Digite el número de celular al que desea recargar.\n"))
-                if numero == celular:
+                numero = input("Digite el número de celular al que desea recargar.\n")
+                if len(numero) < 10:
+                    print("¡¡ERROR!! El núero de celular debe de ser de 10 digitos.")
+                else:
                     print(f"Su saldo actual es {saldo}")
-                    precio = int("Ingrese el valor de la recagra: \n")
+                    precio = int(input("Ingrese el valor de la recargar: \n"))
                     saldo = saldo - precio
-                    print(f"Su recagra se a realizado con exito al número {numero} de un valor de {precio}")
+                    print(f"Su recagra se a realizado con exito al número {numero} de un valor de {precio}, el saldo de su cuenta ahora es de {saldo}")
 
             elif select == 6:
                 print("Gracias por usar nequi.")
                 break
                 
-        op = input("Si desea selecionar otra opción digite 1. De lo contrario digite 2.\n")
+            op = input("Si desea selecionar otra opción digite 1. De lo contrario digite 2.\n")
 
         saldo = saldo - retiro
 
