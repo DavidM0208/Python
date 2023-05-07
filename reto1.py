@@ -1,12 +1,8 @@
 op = 1
 instructores=['Jennifer', 'Jonathan', 'Andres']
-
 while op == 1:
-
     print(instructores)
-
     opciones=int(input("Digite 1 para agregar un instructor. \nDigite 2 para modicar a los instructore. \nDigite 3 para borrar un instructor. \nDigite 4 para enlistar un instructor. \nDigite 5 para buscar un instructor. \nDigite 6 para ordenar la lista alfabeticamente. \nDigite 7 para salir.\n"))
-
     if opciones == 1:
         instructores.append(input("Ingrese el nombre de instructor que desea añadir: "))
         print(f"Se añadio un nuevo instructor a la lista \n{instructores}")
@@ -38,8 +34,18 @@ while op == 1:
         for index, l in enumerate(instructores):
             print(index, l)
     elif opciones == 5:
-        nombre=(input("Ingrese el nombre del instructor que desea buscar: "))
-        print(f"El intructor {nombre}, se encuentra en la posición {instructores.index(nombre)}")
+        nombre=input("Ingrese el nombre del instructor que desea buscar: ")
+        nombre = nombre.lower()
+        encontrado = False
+        for nombre1 in instructores:
+            nombre1 = nombre1.lower()
+            if nombre1 == nombre:
+                encontrado = True
+                break
+        if encontrado:
+            print(f"El intructor {nombre}, fue encontrado en la lista.")
+        else:
+            print(f"El instructor {nombre}, no fue encontrado en la lista.")      
     elif opciones == 6:
         instructores.sort()
         print(instructores)
@@ -48,5 +54,4 @@ while op == 1:
         break
     else:
         print("Opcion no valida")
-
     op=int(input("Digite 1 si desea seguir modificando la lista. \nDigite 2 si desea salir. \n"))
