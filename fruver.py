@@ -27,6 +27,7 @@ while True:
                 print("¡¡ERROR!! Opción no valida.")
             
         else:
+            
             print("El articulo no existe.")
             fruver[articulo] = {}
             precio = int(input("Ingrese el precio del artículo. \n"))
@@ -69,3 +70,6 @@ while True:
     elif opcion == 5:
          print("Adios")
          break
+    
+    else:
+        print("¡¡ERROR!! Opcion no valida.")
